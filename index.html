@@ -398,6 +398,88 @@
     .sc-num span { color: var(--foam); }
     .sc-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
 
+    /* CREATING VALUE SECTION */
+    .creating-sec { background: var(--pearl); }
+    .creating-sec .sec-lbl { color: var(--wave); }
+    .creating-sec h2.sec-title { color: var(--ink); }
+    .creating-sec h2.sec-title em { color: var(--wave); }
+    .creating-sec .sec-desc { color: var(--subtle); }
+
+    .nalu-link-panel {
+      margin-top: 52px;
+      background: var(--ink);
+      border-radius: 20px;
+      border: 1px solid rgba(14,116,144,0.3);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: stretch;
+      box-shadow: 0 12px 48px rgba(14,58,92,0.14);
+      transition: box-shadow 0.25s;
+    }
+    .nalu-link-panel:hover { box-shadow: 0 20px 64px rgba(14,58,92,0.22); }
+    .nalu-link-body { padding: 48px 52px; position: relative; overflow: hidden; }
+    .nalu-link-body::before {
+      content: '';
+      position: absolute; width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(6,182,212,0.09) 0%, transparent 70%);
+      top: -120px; left: -80px; pointer-events: none;
+    }
+    .nalu-link-body .sec-lbl { color: var(--foam); margin-bottom: 12px; }
+    .nalu-link-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 300; color: white;
+      line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 18px; position: relative; z-index: 1;
+    }
+    .nalu-link-title em { font-style: italic; color: var(--foam); }
+    .nalu-link-desc {
+      font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.5);
+      max-width: 560px; font-weight: 300;
+      margin-bottom: 32px; position: relative; z-index: 1;
+    }
+    .nalu-link-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; position: relative; z-index: 1; }
+    .nalu-pill {
+      background: rgba(14,116,144,0.15);
+      border: 1px solid rgba(6,182,212,0.2);
+      color: var(--foam); border-radius: 100px;
+      padding: 5px 14px; font-size: 12px; font-weight: 500;
+    }
+    .nalu-link-actions { display: flex; gap: 12px; flex-wrap: wrap; position: relative; z-index: 1; }
+    .nalu-link-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--wave), var(--foam));
+      color: white; padding: 13px 28px; border-radius: var(--radius);
+      font-size: 14px; font-weight: 500;
+      box-shadow: 0 4px 20px rgba(6,182,212,0.28);
+      transition: 0.2s;
+    }
+    .nalu-link-cta:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(6,182,212,0.38); }
+    .nalu-link-cta svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .nalu-link-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.7);
+      padding: 12px 28px; border-radius: var(--radius);
+      font-size: 14px; font-weight: 400; transition: 0.2s;
+    }
+    .nalu-link-ghost:hover { border-color: var(--foam); color: var(--foam); }
+    .nalu-link-side {
+      background: linear-gradient(160deg, rgba(14,116,144,0.18), rgba(6,182,212,0.06));
+      border-left: 1px solid rgba(14,116,144,0.22);
+      padding: 48px 40px;
+      display: flex; flex-direction: column; gap: 20px;
+      justify-content: center; min-width: 240px;
+    }
+    .nalu-stat { text-align: center; }
+    .nalu-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px; font-weight: 600; color: white; line-height: 1;
+    }
+    .nalu-stat-num span { color: var(--foam); }
+    .nalu-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 5px; line-height: 1.4; }
+    .nalu-divider { height: 1px; background: rgba(255,255,255,0.07); }
+
     /* CTA SECTION */
     .cta-sec { background: var(--ink); padding: 80px; }
     .cta-box {
@@ -540,6 +622,11 @@
       .map-panel { min-height: auto; }
       footer { padding: 28px 24px; flex-direction: column; gap: 14px; text-align: center; }
       .hero-stats { flex-wrap: wrap; gap: 28px; }
+      .nalu-link-panel { grid-template-columns: 1fr; }
+      .nalu-link-side { border-left: none; border-top: 1px solid rgba(14,116,144,0.22); flex-direction: row; flex-wrap: wrap; gap: 0; padding: 28px 32px; }
+      .nalu-link-side .nalu-stat { flex: 1; min-width: 120px; padding: 0 12px; }
+      .nalu-link-side .nalu-divider { display: none; }
+      .nalu-link-body { padding: 32px; }
     }
     @media (max-width: 600px) {
       .grid-4 { grid-template-columns: 1fr; }
@@ -562,6 +649,7 @@
       <li><a href="#exial">EXIAL</a></li>
       <li><a href="#programs">Programs</a></li>
       <li><a href="#proforma">Pro-Forma</a></li>
+      <li><a href="#creating-value">Creating Value</a></li>
     </ul>
     <a class="nav-cta" href="#access">Request Access</a>
   </nav>
@@ -779,6 +867,55 @@
           <div class="stat-callout fade-up"><div class="sc-num">$42<span>M</span></div><div class="sc-desc">Illustrative annual revenue</div></div>
           <div class="stat-callout fade-up"><div class="sc-num">$12.6<span>M</span></div><div class="sc-desc">Potential EXIAL rewards allocation</div></div>
         </div>
+      </div>
+    </section>
+
+    <!-- CREATING VALUE -->
+    <section id="creating-value" class="creating-sec">
+      <div class="sec-inner">
+        <div class="sec-center">
+          <div class="sec-lbl">Powered by NaluAsk</div>
+          <h2 class="sec-title">Creating <em>value</em> at every layer.</h2>
+          <p class="sec-desc">The TPG × NALU platform runs on the NaluAsk Enterprise KB — a private AI knowledge layer that gives every deployment accurate, grounded answers drawn from your own content.</p>
+        </div>
+        <a class="nalu-link-panel fade-up" href="https://enterprise.naluask.com/" target="_blank" rel="noopener">
+          <div class="nalu-link-body">
+            <div class="sec-lbl">NaluAsk Enterprise</div>
+            <div class="nalu-link-title">AI that <em>knows</em> your business.</div>
+            <p class="nalu-link-desc">NaluAsk Enterprise powers the NALU interaction layer with a private, closed knowledge base built from your documents, website, policies, and product data — delivering sourced, brand-accurate answers 24/7 in any language.</p>
+            <div class="nalu-link-pills">
+              <span class="nalu-pill">Closed Knowledge Base</span>
+              <span class="nalu-pill">RAG + Web Indexing</span>
+              <span class="nalu-pill">Claude · GPT · Perplexity</span>
+              <span class="nalu-pill">Multilingual</span>
+              <span class="nalu-pill">Audit Logs</span>
+              <span class="nalu-pill">~300ms Retrieval</span>
+            </div>
+            <div class="nalu-link-actions">
+              <span class="nalu-link-cta">
+                Visit NaluAsk Enterprise
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </span>
+              <span class="nalu-link-ghost">See the platform →</span>
+            </div>
+          </div>
+          <div class="nalu-link-side">
+            <div class="nalu-stat">
+              <div class="nalu-stat-num">88<span>%</span></div>
+              <div class="nalu-stat-lbl">Gross margin at Enterprise tier</div>
+            </div>
+            <div class="nalu-divider"></div>
+            <div class="nalu-stat">
+              <div class="nalu-stat-num">~300<span>ms</span></div>
+              <div class="nalu-stat-lbl">KB retrieval latency per query</div>
+            </div>
+            <div class="nalu-divider"></div>
+            <div class="nalu-stat">
+              <div class="nalu-stat-num">10<span>K+</span></div>
+              <div class="nalu-stat-lbl">Web pages indexed per knowledge base</div>
+            </div>
+          </div>
+        </a>
       </div>
     </section>
 
