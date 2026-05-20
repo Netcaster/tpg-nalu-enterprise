@@ -66,6 +66,8 @@
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { color: rgba(255,255,255,0.55); font-size: 14px; transition: color 0.2s; }
     .nav-links a:hover { color: var(--foam); }
+    .nav-back { color: rgba(255,255,255,0.35) !important; font-size: 12px !important; display: inline-flex; align-items: center; gap: 5px; border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 10px !important; transition: all 0.2s !important; }
+    .nav-back:hover { color: rgba(255,255,255,0.7) !important; border-color: rgba(255,255,255,0.3) !important; }
     .nav-cta {
       background: linear-gradient(135deg, var(--wave), var(--foam));
       color: white; border: none;
@@ -644,6 +646,7 @@
       </div>
     </a>
     <ul class="nav-links">
+      <li><a href="https://enterprise.naluask.com" class="nav-back">← NaluAsk Enterprise</a></li>
       <li><a href="#platform">Platform</a></li>
       <li><a href="#deployment">Deployment</a></li>
       <li><a href="#exial">EXIAL</a></li>
