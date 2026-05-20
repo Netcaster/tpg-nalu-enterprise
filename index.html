@@ -542,10 +542,12 @@
     .assistant-button svg { width: 28px; height: 28px; }
 
     /* ASSISTANT PANEL */
+    .panel-overlay { display:none; position:fixed; inset:0; z-index:89; }
+    .panel-overlay.open { display:block; }
     .assistant-panel {
       position: fixed; z-index: 90; right: 24px; bottom: 98px;
       width: min(420px, calc(100% - 32px));
-      max-height: calc(100vh - 130px);
+      max-height: calc(100vh - 88px - 98px);
       border: 1px solid rgba(14,116,144,0.3);
       border-radius: 16px;
       background: rgba(11,18,32,0.98);
@@ -555,7 +557,7 @@
       display: none; flex-direction: column;
     }
     .assistant-panel.open { display: flex; animation: lift 0.22s ease; }
-    .assistant-body { overflow-y: auto; flex: 1; }
+    .assistant-body { overflow-y: auto; flex: 1; padding-bottom: 4px; }
     @keyframes lift { from{ opacity:0; transform:translateY(16px) scale(0.97); } to{ opacity:1; transform:translateY(0) scale(1); } }
     .assistant-head {
       padding: 18px 20px;
@@ -959,6 +961,7 @@
   </button>
 
   <!-- ASSISTANT PANEL -->
+  <div id="panelOverlay" class="panel-overlay" onclick="closeAssistant()"></div>
   <aside id="assistantPanel" class="assistant-panel" aria-label="NALU Assistant">
     <div class="assistant-head">
       <div>
@@ -986,14 +989,15 @@
 
   <script>
     const panel = document.getElementById('assistantPanel');
+    const overlay = document.getElementById('panelOverlay');
     const response = document.getElementById('assistantResponse');
     const label = document.getElementById('assistantModeLabel');
     const neuralToggle = document.getElementById('neuralToggle');
     const mascotToggle = document.getElementById('mascotToggle');
     let mode = 'neural';
 
-    function openAssistant() { panel.classList.add('open'); }
-    function closeAssistant() { panel.classList.remove('open'); }
+    function openAssistant() { panel.classList.add('open'); overlay.classList.add('open'); }
+    function closeAssistant() { panel.classList.remove('open'); overlay.classList.remove('open'); }
 
     function setMode(next) {
       mode = next;
