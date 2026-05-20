@@ -5,467 +5,824 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TPG × NALU | Enterprise AI Engagement Platform</title>
   <meta name="description" content="TPG × NALU enterprise AI engagement platform with EXIAL-powered loyalty, rewards, hospitality, events, R.I.S.E., and closed knowledge deployments." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #020617;
-      --bg2: #0f172a;
-      --card: rgba(255,255,255,0.055);
-      --card2: rgba(255,255,255,0.085);
-      --line: rgba(255,255,255,0.12);
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --muted2: #94a3b8;
-      --cyan: #67e8f9;
-      --blue: #38bdf8;
-      --gold: #fbbf24;
-      --green: #86efac;
-      --shadow: 0 30px 80px rgba(0,0,0,0.45);
-      --radius: 28px;
+      --ink: #0b1220;
+      --deep: #0d1f35;
+      --ocean: #0e3a5c;
+      --wave: #0e7490;
+      --foam: #06b6d4;
+      --gold: #d4a843;
+      --amber: #f59e0b;
+      --pearl: #f0f4f8;
+      --mist: #e2eaf3;
+      --text: #1e293b;
+      --subtle: #64748b;
+      --white: #ffffff;
+      --success: #10b981;
+      --radius: 6px;
     }
 
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 15% 10%, rgba(56,189,248,0.24), transparent 32%),
-        radial-gradient(circle at 90% 12%, rgba(251,191,36,0.14), transparent 28%),
-        linear-gradient(180deg, var(--bg), var(--bg2) 48%, var(--bg));
+      font-family: 'DM Sans', sans-serif;
+      color: var(--white);
+      background: var(--ink);
       overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.11;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px);
-      background-size: 64px 64px;
-      z-index: -2;
-    }
-
     a { color: inherit; text-decoration: none; }
-    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .container { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
 
-    header {
+    /* NAV */
+    nav {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(18px);
-      background: rgba(2,6,23,0.76);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      height: 76px;
+      z-index: 100;
+      background: rgba(11,18,32,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(14,116,144,0.2);
+      padding: 0 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      height: 64px;
     }
-
-    .brand { display: flex; align-items: center; gap: 14px; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
     .brand-mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      color: #03141f;
-      background: linear-gradient(135deg, var(--cyan), var(--gold));
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      box-shadow: 0 18px 45px rgba(103,232,249,0.18);
+      width: 42px; height: 42px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--wave), var(--foam));
+      color: var(--ink); font-weight: 700; font-size: 18px;
+      letter-spacing: -0.05em;
+      box-shadow: 0 4px 20px rgba(6,182,212,0.25);
     }
-    .brand-title { font-size: 13px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--cyan); font-weight: 800; }
-    .brand-sub { font-size: 12px; color: var(--muted2); margin-top: 3px; }
-
-    .nav-links { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: 14px; }
-    .nav-links a:hover { color: white; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      padding: 13px 20px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease, border 0.2s ease;
-      min-height: 46px;
-      font-size: 14px;
+    .brand-name { font-size: 15px; font-weight: 600; color: white; letter-spacing: 0.02em; }
+    .brand-name span { color: var(--foam); }
+    .brand-sub { font-size: 11px; color: rgba(255,255,255,0.38); margin-top: 2px; letter-spacing: 0.01em; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.55); font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--foam); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--wave), var(--foam));
+      color: white; border: none;
+      padding: 10px 22px; border-radius: var(--radius);
+      font-size: 14px; font-weight: 500;
+      cursor: pointer; transition: 0.2s;
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--cyan); color: #03141f; }
-    .btn-primary:hover { background: #a5f3fc; }
-    .btn-secondary { background: rgba(255,255,255,0.06); border-color: var(--line); color: white; }
-    .btn-secondary:hover { background: rgba(255,255,255,0.11); }
-    .btn-gold { background: var(--gold); color: #1e1300; }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
 
-    section { padding: 88px 0; position: relative; }
-    .hero { min-height: calc(100vh - 76px); display: grid; align-items: center; padding: 60px 0 80px; }
-    .hero-grid { display: grid; grid-template-columns: 1.03fr 0.97fr; gap: 56px; align-items: center; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(103,232,249,0.28);
-      background: rgba(103,232,249,0.10);
-      color: #cffafe;
-      padding: 9px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 800;
-      margin-bottom: 24px;
+    /* BTN */
+    .btn-p {
+      background: linear-gradient(135deg, var(--wave), var(--foam));
+      color: white; padding: 15px 32px; border-radius: var(--radius);
+      font-size: 15px; font-weight: 500; display: inline-block;
+      transition: 0.2s; box-shadow: 0 4px 24px rgba(6,182,212,0.3);
+      border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
     }
-    h1, h2, h3, p { margin: 0; }
-    h1 { font-size: clamp(48px, 7vw, 86px); line-height: 0.94; letter-spacing: -0.065em; }
-    h2 { font-size: clamp(36px, 5vw, 60px); line-height: 1; letter-spacing: -0.05em; }
-    h3 { font-size: 22px; letter-spacing: -0.025em; }
-    .lead { margin-top: 26px; color: var(--muted); font-size: 20px; line-height: 1.65; max-width: 660px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-
-    .panel {
-      border: 1px solid var(--line);
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
+    .btn-p:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(6,182,212,0.4); }
+    .btn-g {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8); padding: 14px 32px;
+      border-radius: var(--radius); font-size: 15px; font-weight: 400;
+      display: inline-block; transition: 0.2s;
     }
-    .console { padding: 28px; position: relative; overflow: hidden; }
-    .console::before {
-      content: "";
-      position: absolute;
-      width: 250px;
-      height: 250px;
-      border-radius: 999px;
-      right: -90px;
-      top: -70px;
-      background: rgba(103,232,249,0.18);
-      filter: blur(20px);
+    .btn-g:hover { border-color: var(--foam); color: var(--foam); }
+
+    /* HERO */
+    .hero {
+      background: var(--ink);
+      min-height: calc(100vh - 64px);
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 100px 80px 80px;
     }
-    .console-head { display: flex; justify-content: space-between; gap: 20px; align-items: start; position: relative; z-index: 1; }
-    .label { color: var(--gold); text-transform: uppercase; letter-spacing: 0.25em; font-size: 12px; font-weight: 900; }
-    .console-title { margin-top: 8px; font-size: 26px; font-weight: 900; letter-spacing: -0.04em; }
-    .pulse-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(134,239,172,0.6); animation: pulse 2s infinite; margin-top: 8px; }
-    @keyframes pulse { 0%{ box-shadow: 0 0 0 0 rgba(134,239,172,0.6);} 70%{box-shadow: 0 0 0 18px rgba(134,239,172,0);} 100%{box-shadow:0 0 0 0 rgba(134,239,172,0);} }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(14,116,144,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14,116,144,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .glow1 {
+      position: absolute; width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%);
+      top: -200px; right: -200px; pointer-events: none;
+    }
+    .glow2 {
+      position: absolute; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(212,168,67,0.08) 0%, transparent 70%);
+      bottom: -100px; left: 80px; pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; }
+    .hero-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
 
-    .flow-stack { position: relative; z-index: 1; margin-top: 28px; display: grid; gap: 13px; }
-    .flow-item { border: 1px solid var(--line); border-radius: 20px; padding: 18px; background: rgba(2,6,23,0.52); }
-    .flow-item strong { display: block; font-size: 18px; }
-    .flow-item span { color: var(--muted2); font-size: 13px; display: block; margin-top: 5px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(14,116,144,0.15);
+      border: 1px solid rgba(6,182,212,0.3);
+      color: var(--foam); border-radius: 100px;
+      padding: 6px 18px; font-size: 12px; font-weight: 600;
+      margin-bottom: 32px; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; background: var(--foam);
+      border-radius: 50%; animation: bpulse 2s infinite;
+    }
+    @keyframes bpulse { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.5; transform:scale(1.4); } }
 
-    .section-intro { max-width: 780px; margin: 0 auto 44px; text-align: center; }
-    .section-intro p { margin-top: 18px; color: var(--muted); font-size: 18px; line-height: 1.65; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: center; }
-    .card { border: 1px solid var(--line); background: var(--card); border-radius: 24px; padding: 26px; box-shadow: 0 18px 50px rgba(0,0,0,0.2); backdrop-filter: blur(14px); transition: transform 0.22s ease, background 0.22s ease; }
-    .card:hover { transform: translateY(-4px); background: var(--card2); }
-    .icon { width: 48px; height: 48px; border-radius: 18px; display: grid; place-items: center; background: rgba(103,232,249,0.12); color: var(--cyan); margin-bottom: 18px; font-size: 23px; }
-    .card p, .card li { color: var(--muted); line-height: 1.65; font-size: 15px; }
-    .card ul { padding-left: 20px; margin: 14px 0 0; }
+    h1.hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 6.5vw, 92px);
+      font-weight: 300; color: white;
+      line-height: 1.04; letter-spacing: -0.02em;
+      max-width: 860px; margin-bottom: 28px;
+    }
+    h1.hero-title em { font-style: italic; color: var(--foam); }
+    h1.hero-title .gold { color: var(--gold); font-weight: 600; }
 
-    .map-panel { padding: 30px; min-height: 500px; position: relative; overflow: hidden; }
-    .map-orbit { position: absolute; inset: 52px; border: 1px solid rgba(103,232,249,0.18); border-radius: 50%; animation: rotate 26s linear infinite; }
-    .map-orbit.two { inset: 92px; border-color: rgba(251,191,36,0.14); animation-duration: 34s; animation-direction: reverse; }
+    .hero-sub {
+      font-size: 18px; line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+      max-width: 560px; margin-bottom: 40px; font-weight: 300;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .hero-stats {
+      display: flex; gap: 48px; margin-top: 64px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 36px; flex-wrap: wrap;
+    }
+    .stat-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px; font-weight: 600; color: white; line-height: 1;
+    }
+    .stat-val span { color: var(--foam); }
+    .stat-lbl { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 6px; font-weight: 300; }
+
+    /* CONSOLE PANEL (hero right) */
+    .console-panel {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(14,116,144,0.3);
+      border-radius: 16px; padding: 32px;
+      position: relative; overflow: hidden;
+    }
+    .console-panel::before {
+      content: '';
+      position: absolute; width: 300px; height: 300px;
+      border-radius: 50%; right: -100px; top: -80px;
+      background: rgba(6,182,212,0.1);
+      filter: blur(40px); pointer-events: none;
+    }
+    .console-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    }
+    .console-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 400; color: white;
+      letter-spacing: -0.01em; margin-bottom: 6px;
+    }
+    .console-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; }
+    .pulse-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 0 0 rgba(16,185,129,0.6);
+      animation: pulse 2s infinite; margin-top: 6px;
+    }
+    @keyframes pulse { 0%{ box-shadow: 0 0 0 0 rgba(16,185,129,0.6); } 70%{ box-shadow: 0 0 0 12px rgba(16,185,129,0); } 100%{ box-shadow: 0 0 0 0 rgba(16,185,129,0); } }
+
+    .flow-stack { display: grid; gap: 10px; position: relative; z-index: 1; }
+    .flow-item {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; padding: 16px 18px;
+      background: rgba(11,18,32,0.6);
+      transition: border-color 0.2s;
+    }
+    .flow-item:hover { border-color: rgba(6,182,212,0.25); }
+    .flow-item strong { display: block; font-size: 15px; font-weight: 600; color: white; }
+    .flow-item span { color: rgba(255,255,255,0.4); font-size: 12px; display: block; margin-top: 3px; }
+
+    /* SECTIONS */
+    section { padding: 96px 80px; }
+    .sec-inner { max-width: 1200px; margin: 0 auto; }
+    .sec-lbl {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--wave); margin-bottom: 14px;
+    }
+    h2.sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4vw, 58px);
+      font-weight: 300; line-height: 1.1;
+      letter-spacing: -0.02em; margin-bottom: 18px;
+    }
+    h2.sec-title em { font-style: italic; color: var(--wave); }
+    .sec-desc { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 600px; font-weight: 300; }
+    .sec-center { text-align: center; }
+    .sec-center .sec-desc { margin: 0 auto; }
+
+    /* PLATFORM SECTION */
+    .platform-sec { background: var(--pearl); }
+    .platform-sec .sec-lbl { color: var(--wave); }
+    .platform-sec h2.sec-title { color: var(--ink); }
+    .platform-sec h2.sec-title em { color: var(--wave); }
+    .platform-sec .sec-desc { color: var(--subtle); }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 52px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 52px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; align-items: center; }
+
+    .f-card {
+      background: white; border-radius: 12px; padding: 32px;
+      border: 1px solid var(--mist); transition: 0.2s;
+    }
+    .f-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(14,58,92,0.08); border-color: rgba(14,116,144,0.2); }
+    .f-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(14,58,92,0.07), rgba(14,116,144,0.12));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 18px;
+    }
+    .f-card h4 { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+    .f-card p { font-size: 13px; line-height: 1.6; color: var(--subtle); }
+    .f-tag {
+      display: inline-block; margin-top: 14px;
+      background: rgba(14,116,144,0.08); color: var(--wave);
+      font-size: 10px; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 4px;
+    }
+
+    /* DEPLOYMENT SECTION */
+    .deploy-sec { background: var(--ink); }
+    .deploy-sec .sec-lbl { color: var(--foam); }
+
+    .map-panel {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(14,116,144,0.25);
+      border-radius: 16px; padding: 32px;
+      min-height: 480px; position: relative; overflow: hidden;
+    }
+    .map-orbit {
+      position: absolute; inset: 52px;
+      border: 1px solid rgba(6,182,212,0.15);
+      border-radius: 50%; animation: rotate 26s linear infinite;
+    }
+    .map-orbit.two {
+      inset: 96px; border-color: rgba(212,168,67,0.12);
+      animation-duration: 34s; animation-direction: reverse;
+    }
     @keyframes rotate { to { transform: rotate(360deg); } }
-    .pin { position: absolute; width: 210px; border: 1px solid var(--line); border-radius: 20px; padding: 16px; background: rgba(2,6,23,0.76); box-shadow: 0 20px 50px rgba(0,0,0,0.28); }
-    .pin strong { display: block; color: white; }
-    .pin span { color: var(--muted2); font-size: 13px; line-height: 1.5; display: block; margin-top: 5px; }
-    .pin:nth-child(3) { left: 6%; top: 12%; }
-    .pin:nth-child(4) { right: 7%; top: 18%; }
-    .pin:nth-child(5) { left: 14%; bottom: 13%; }
-    .pin:nth-child(6) { right: 13%; bottom: 11%; }
-
-    .waterfall { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 14px; align-items: center; margin-top: 34px; }
-    .node { border: 1px solid var(--line); border-radius: 22px; background: rgba(2,6,23,0.60); padding: 24px; text-align: center; min-height: 135px; display: grid; place-items: center; }
-    .node strong { display: block; font-size: 20px; }
-    .node span { display: block; color: var(--muted2); font-size: 13px; margin-top: 8px; line-height: 1.45; }
-    .arrow { color: var(--cyan); font-size: 32px; font-weight: 900; }
-
-    .stat { border: 1px solid var(--line); border-radius: 24px; background: var(--card); padding: 26px; }
-    .stat strong { font-size: clamp(34px, 4vw, 52px); display: block; letter-spacing: -0.05em; }
-    .stat span { color: var(--muted2); display: block; margin-top: 7px; }
-
-    .cta { text-align: center; padding: 58px; border: 1px solid rgba(103,232,249,0.22); border-radius: 36px; background: linear-gradient(135deg, rgba(103,232,249,0.13), rgba(251,191,36,0.08)); box-shadow: var(--shadow); }
-    .cta p { max-width: 780px; margin: 20px auto 0; color: var(--muted); font-size: 18px; line-height: 1.6; }
-
-    footer { border-top: 1px solid var(--line); padding: 36px 0; color: var(--muted2); text-align: center; }
-    footer strong { color: white; letter-spacing: 0.22em; text-transform: uppercase; font-size: 13px; display: block; margin-bottom: 10px; }
-
-    .assistant-button {
-      position: fixed;
-      z-index: 80;
-      right: 24px;
-      bottom: 24px;
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      border: 1px solid rgba(103,232,249,0.38);
-      background: rgba(103,232,249,0.16);
-      color: white;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      box-shadow: 0 20px 65px rgba(56,189,248,0.28);
-      backdrop-filter: blur(18px);
-      animation: breathe 2.5s infinite;
+    .pin {
+      position: absolute; width: 200px;
+      border: 1px solid rgba(14,116,144,0.3);
+      border-radius: 12px; padding: 16px;
+      background: rgba(11,18,32,0.9);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
-    @keyframes breathe { 0%,100%{ transform: scale(1);} 50%{ transform: scale(1.07);} }
-    .assistant-button svg { width: 32px; height: 32px; }
+    .pin strong { display: block; color: white; font-size: 14px; font-weight: 600; }
+    .pin span { color: rgba(255,255,255,0.4); font-size: 12px; line-height: 1.5; display: block; margin-top: 4px; }
+    .pin:nth-child(3) { left: 5%; top: 10%; }
+    .pin:nth-child(4) { right: 5%; top: 16%; }
+    .pin:nth-child(5) { left: 12%; bottom: 12%; }
+    .pin:nth-child(6) { right: 10%; bottom: 10%; }
 
+    /* VALUE / EXIAL SECTION */
+    .value-sec { background: var(--pearl); }
+    .value-sec .sec-lbl { color: var(--wave); }
+    .value-sec h2.sec-title { color: var(--ink); }
+    .value-sec .sec-desc { color: var(--subtle); }
+
+    .v-card {
+      background: white; border-radius: 12px; padding: 28px;
+      border: 1px solid var(--mist); transition: 0.2s;
+    }
+    .v-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(14,58,92,0.08); border-color: rgba(14,116,144,0.2); }
+    .v-card h4 { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+    .v-card p { font-size: 13px; line-height: 1.6; color: var(--subtle); }
+
+    /* EXIAL SECTION */
+    .exial-sec {
+      background: linear-gradient(160deg, #061F26 0%, #0A3D4A 60%, #0D5E6E 100%);
+    }
+    .exial-sec .sec-lbl { color: var(--foam); }
+    .exial-sec h2.sec-title { color: white; }
+    .exial-sec h2.sec-title em { color: var(--foam); }
+    .exial-sec .sec-desc { color: rgba(255,255,255,0.5); }
+
+    .waterfall {
+      display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 16px; align-items: center; margin-top: 48px;
+    }
+    .node {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(6,182,212,0.18);
+      border-radius: 14px; padding: 28px; text-align: center;
+      min-height: 130px; display: grid; place-items: center;
+      position: relative; overflow: hidden;
+    }
+    .node::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--wave), var(--foam));
+    }
+    .node strong { display: block; font-size: 16px; font-weight: 600; color: white; margin-bottom: 8px; }
+    .node span { display: block; color: rgba(255,255,255,0.45); font-size: 12px; line-height: 1.5; }
+    .arrow { color: var(--foam); font-size: 28px; font-weight: 700; text-align: center; }
+
+    /* PROGRAMS SECTION */
+    .programs-sec { background: var(--ink); }
+    .programs-sec .sec-lbl { color: var(--foam); }
+
+    .prog-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 32px;
+      position: relative; overflow: hidden; transition: 0.2s;
+    }
+    .prog-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--wave), var(--foam));
+    }
+    .prog-card:hover { transform: translateY(-3px); border-color: rgba(6,182,212,0.25); }
+    .prog-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(14,116,144,0.15); border: 1px solid rgba(6,182,212,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 18px; color: var(--foam);
+    }
+    .prog-card h4 { font-size: 16px; font-weight: 600; color: white; margin-bottom: 10px; }
+    .prog-card p { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.5); }
+
+    /* ENTERPRISE / MASCOT */
+    .modes-sec { background: var(--pearl); }
+    .modes-sec .sec-lbl { color: var(--wave); }
+    .modes-sec h2.sec-title { color: var(--ink); }
+    .modes-sec .sec-desc { color: var(--subtle); }
+
+    .mode-card {
+      background: white; border-radius: 14px; padding: 36px;
+      border: 1px solid var(--mist); transition: 0.2s;
+    }
+    .mode-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(14,58,92,0.08); border-color: rgba(14,116,144,0.2); }
+    .mode-card h3 { font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 14px; }
+    .mode-card p { font-size: 14px; line-height: 1.65; color: var(--subtle); margin-bottom: 18px; }
+    .mode-card ul { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+    .mode-card li { font-size: 13px; color: var(--subtle); line-height: 1.5; }
+    .mode-tag {
+      display: inline-block; margin-bottom: 16px;
+      background: rgba(14,116,144,0.08); color: var(--wave);
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 5px 12px; border-radius: 4px;
+    }
+
+    /* PROFORMA */
+    .proforma-sec { background: var(--ink); }
+    .proforma-sec .sec-lbl { color: var(--foam); }
+
+    .stat-callout {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 32px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .stat-callout::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--wave), var(--foam));
+    }
+    .sc-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px; font-weight: 300; color: white; line-height: 1; margin-bottom: 8px;
+    }
+    .sc-num span { color: var(--foam); }
+    .sc-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    /* CTA SECTION */
+    .cta-sec { background: var(--ink); padding: 80px; }
+    .cta-box {
+      text-align: center;
+      border: 1px solid rgba(6,182,212,0.2);
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(14,116,144,0.12), rgba(6,182,212,0.06));
+      padding: 64px 48px;
+      position: relative; overflow: hidden;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .cta-box::before {
+      content: ''; position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
+      top: -200px; left: 50%; transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .cta-box h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4vw, 58px);
+      font-weight: 300; color: white;
+      letter-spacing: -0.02em; margin-bottom: 20px;
+      position: relative; z-index: 1;
+    }
+    .cta-box h2 em { font-style: italic; color: var(--foam); }
+    .cta-box p { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 620px; margin: 0 auto 40px; font-weight: 300; position: relative; z-index: 1; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 80px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .f-left { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .f-left a { color: var(--foam); }
+    .f-right { display: flex; gap: 24px; }
+    .f-right a { font-size: 13px; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+    .f-right a:hover { color: var(--foam); }
+
+    /* ASSISTANT BUTTON */
+    .assistant-button {
+      position: fixed; z-index: 80; right: 24px; bottom: 24px;
+      width: 62px; height: 62px; border-radius: 50%;
+      border: 1px solid rgba(6,182,212,0.35);
+      background: rgba(14,116,144,0.25);
+      color: white; display: grid; place-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 32px rgba(6,182,212,0.25);
+      backdrop-filter: blur(12px);
+      animation: breathe 2.5s ease-in-out infinite;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .assistant-button:hover { background: rgba(6,182,212,0.25); border-color: var(--foam); }
+    @keyframes breathe { 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.06); } }
+    .assistant-button svg { width: 28px; height: 28px; }
+
+    /* ASSISTANT PANEL */
     .assistant-panel {
-      position: fixed;
-      z-index: 90;
-      right: 24px;
-      bottom: 104px;
-      width: min(430px, calc(100% - 36px));
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      background: rgba(2,6,23,0.96);
-      box-shadow: var(--shadow);
-      display: none;
-      overflow: hidden;
+      position: fixed; z-index: 90; right: 24px; bottom: 98px;
+      width: min(420px, calc(100% - 32px));
+      border: 1px solid rgba(14,116,144,0.3);
+      border-radius: 16px;
+      background: rgba(11,18,32,0.98);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      display: none; overflow: hidden;
       backdrop-filter: blur(20px);
     }
-    .assistant-panel.open { display: block; animation: lift 0.25s ease; }
-    @keyframes lift { from { opacity: 0; transform: translateY(20px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
-    .assistant-head { padding: 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-    .assistant-head small { color: var(--cyan); text-transform: uppercase; letter-spacing: 0.24em; font-weight: 900; }
-    .assistant-head strong { display: block; margin-top: 5px; }
-    .close { border: 0; background: rgba(255,255,255,0.08); color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; }
-    .assistant-body { padding: 20px; }
+    .assistant-panel.open { display: block; animation: lift 0.22s ease; }
+    @keyframes lift { from{ opacity:0; transform:translateY(16px) scale(0.97); } to{ opacity:1; transform:translateY(0) scale(1); } }
+    .assistant-head {
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center; gap: 14px;
+    }
+    .assistant-head small {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--foam);
+    }
+    .assistant-head strong { display: block; font-size: 15px; color: white; margin-top: 3px; }
+    .close-btn {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.6); width: 32px; height: 32px;
+      border-radius: 50%; cursor: pointer; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      transition: 0.2s;
+    }
+    .close-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+    .assistant-body { padding: 18px 20px; }
     .toggle { display: flex; gap: 8px; margin-bottom: 14px; }
-    .toggle button { flex: 1; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,0.06); color: white; padding: 10px; cursor: pointer; font-weight: 800; font-size: 14px; }
-    .toggle button.active { background: var(--cyan); color: #03141f; }
-    .chat-bubble { border: 1px solid var(--line); border-radius: 20px; padding: 16px; color: var(--muted); line-height: 1.55; background: rgba(255,255,255,0.045); min-height: 118px; font-size: 15px; }
-    .prompt-grid { margin-top: 14px; display: grid; gap: 9px; }
-    .prompt-grid button { border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,0.045); color: white; padding: 13px 14px; text-align: left; cursor: pointer; font-size: 14px; }
-    .prompt-grid button:hover { background: rgba(255,255,255,0.09); }
-    .assistant-panel .btn { width: 100%; margin-top: 14px; }
+    .toggle button {
+      flex: 1; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius); background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.6); padding: 9px; cursor: pointer;
+      font-weight: 600; font-size: 13px; font-family: 'DM Sans', sans-serif;
+      transition: 0.2s;
+    }
+    .toggle button.active {
+      background: linear-gradient(135deg, var(--wave), var(--foam));
+      color: white; border-color: transparent;
+    }
+    .chat-bubble {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; padding: 16px;
+      color: rgba(255,255,255,0.6); line-height: 1.55;
+      background: rgba(255,255,255,0.03);
+      min-height: 100px; font-size: 14px;
+    }
+    .prompt-grid { margin-top: 12px; display: grid; gap: 8px; }
+    .prompt-grid button {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.7); padding: 12px 14px;
+      text-align: left; cursor: pointer; font-size: 13px;
+      font-family: 'DM Sans', sans-serif; transition: 0.2s;
+    }
+    .prompt-grid button:hover { background: rgba(14,116,144,0.12); border-color: rgba(6,182,212,0.25); color: white; }
+    .assistant-panel .btn-p { width: 100%; margin-top: 14px; text-align: center; display: block; }
 
+    /* FADE IN */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.vis { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1024px) {
+      .grid-4 { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 900px) {
+      nav { padding: 0 24px; }
       .nav-links { display: none; }
-      .hero-grid, .grid-2 { grid-template-columns: 1fr; }
-      .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      section, .hero, .cta-sec { padding-left: 24px; padding-right: 24px; }
+      .hero-layout, .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
       .waterfall { grid-template-columns: 1fr; }
       .arrow { transform: rotate(90deg); text-align: center; }
       .pin { position: relative; inset: auto !important; width: 100%; margin-bottom: 12px; }
       .map-orbit { display: none; }
       .map-panel { min-height: auto; }
-      section { padding: 66px 0; }
-      .cta { padding: 34px 20px; }
+      footer { padding: 28px 24px; flex-direction: column; gap: 14px; text-align: center; }
+      .hero-stats { flex-wrap: wrap; gap: 28px; }
+    }
+    @media (max-width: 600px) {
+      .grid-4 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#top" aria-label="TPG NALU Home">
-        <div class="brand-mark">N</div>
-        <div>
-          <div class="brand-title">TPG × NALU</div>
-          <div class="brand-sub">Enterprise AI + Value Infrastructure</div>
-        </div>
-      </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#platform">Platform</a>
-        <a href="#deployment">Deployment</a>
-        <a href="#exial">EXIAL</a>
-        <a href="#programs">Programs</a>
-        <a href="#proforma">Pro-Forma</a>
-      </nav>
-      <a class="btn btn-primary" href="#access">Request Access</a>
-    </div>
-  </header>
+
+  <nav>
+    <a class="nav-logo" href="#top">
+      <div class="brand-mark">N</div>
+      <div>
+        <div class="brand-name">TPG <span>× NALU</span></div>
+        <div class="brand-sub">Enterprise AI + Value Infrastructure</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#platform">Platform</a></li>
+      <li><a href="#deployment">Deployment</a></li>
+      <li><a href="#exial">EXIAL</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#proforma">Pro-Forma</a></li>
+    </ul>
+    <a class="nav-cta" href="#access">Request Access</a>
+  </nav>
 
   <main id="top">
+
+    <!-- HERO -->
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Commercial enterprise-grade AI engagement</div>
-          <h1>NALU turns every interaction into value.</h1>
-          <p class="lead">A standalone TPG co-branded platform for enterprise knowledge, hospitality, travel, entertainment, sports, rewards, EXIAL treasury participation, and R.I.S.E. ecosystem deployment.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#access">Request Access →</a>
-            <a class="btn btn-secondary" href="#platform">Explore Platform</a>
-          </div>
-        </div>
-        <div class="panel console">
-          <div class="console-head">
-            <div>
-              <div class="label">Unified Interaction Layer</div>
-              <div class="console-title">NALU Neural Console</div>
+      <div class="hero-grid"></div>
+      <div class="glow1"></div>
+      <div class="glow2"></div>
+      <div class="hero-inner">
+        <div class="hero-layout">
+          <div>
+            <div class="badge"><span class="badge-dot"></span>Commercial Enterprise-Grade AI Engagement</div>
+            <h1 class="hero-title">NALU turns every<br><em>interaction</em> into <span class="gold">value.</span></h1>
+            <p class="hero-sub">A standalone TPG co-branded platform for enterprise knowledge, hospitality, travel, entertainment, sports, rewards, EXIAL treasury participation, and R.I.S.E. ecosystem deployment.</p>
+            <div class="hero-actions">
+              <a class="btn-p" href="#access">Request Access →</a>
+              <a class="btn-g" href="#platform">Explore Platform</a>
             </div>
-            <div class="pulse-dot" aria-hidden="true"></div>
+            <div class="hero-stats">
+              <div><div class="stat-val">750<span>K</span></div><div class="stat-lbl">Total platform users</div></div>
+              <div><div class="stat-val">400<span>K</span></div><div class="stat-lbl">Monthly active users</div></div>
+              <div><div class="stat-val">$42<span>M</span></div><div class="stat-lbl">Illustrative annual revenue</div></div>
+              <div><div class="stat-val">3<span>×</span></div><div class="stat-lbl">Deployment modes: Neural · Mascot · KB</div></div>
+            </div>
           </div>
-          <div class="flow-stack">
-            <div class="flow-item"><strong>Ask</strong><span>Voice, text, multilingual inquiry</span></div>
-            <div class="flow-item"><strong>Guide</strong><span>Tickets, travel, service, product paths</span></div>
-            <div class="flow-item"><strong>Transact</strong><span>Marketplace, hotel, event, device revenue</span></div>
-            <div class="flow-item"><strong>Reward</strong><span>NALU loyalty + EXIAL bridge</span></div>
+          <div class="console-panel fade-up">
+            <div class="console-head">
+              <div>
+                <div class="console-label">Unified Interaction Layer</div>
+                <div class="console-title">NALU Neural Console</div>
+              </div>
+              <div class="pulse-dot" aria-hidden="true"></div>
+            </div>
+            <div class="flow-stack">
+              <div class="flow-item"><strong>Ask</strong><span>Voice, text, multilingual inquiry</span></div>
+              <div class="flow-item"><strong>Guide</strong><span>Tickets, travel, service, product paths</span></div>
+              <div class="flow-item"><strong>Transact</strong><span>Marketplace, hotel, event, device revenue</span></div>
+              <div class="flow-item"><strong>Reward</strong><span>NALU loyalty + EXIAL bridge</span></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="platform">
-      <div class="container">
-        <div class="section-intro">
-          <h2>Not a chatbot. A controlled interaction system.</h2>
-          <p>NALU operates as the intelligent help desk, commerce guide, support layer, and reward gateway across TPG, TPG micro-partners, and participating client platforms.</p>
+    <!-- PLATFORM -->
+    <section id="platform" class="platform-sec">
+      <div class="sec-inner">
+        <div class="sec-center">
+          <div class="sec-lbl">Platform</div>
+          <h2 class="sec-title">Not a chatbot. A <em>controlled</em> interaction system.</h2>
+          <p class="sec-desc">NALU operates as the intelligent help desk, commerce guide, support layer, and reward gateway across TPG, TPG micro-partners, and participating client platforms.</p>
         </div>
         <div class="grid-3">
-          <div class="card"><div class="icon">◆</div><h3>Closed Knowledge AI</h3><p>Enterprise users restrict answers to approved internal materials, SOPs, policy playbooks, product documentation, FAQs, compliance language, and client-specific databases.</p></div>
-          <div class="card"><div class="icon">◉</div><h3>Neural + Mascot Button</h3><p>NALU is deployed as a Neural button for enterprise environments and as a Mascot button for consumer-facing retail, event, hospitality, and marketplace experiences.</p></div>
-          <div class="card"><div class="icon">↗</div><h3>Guided Migration</h3><p>High-value ticketing, travel, entertainment, sports, hospitality, product redemption, and digital gifting activity is guided through NALU to increase conversion and rewards capture.</p></div>
+          <div class="f-card fade-up">
+            <div class="f-icon">◆</div>
+            <h4>Closed Knowledge AI</h4>
+            <p>Enterprise users restrict answers to approved internal materials, SOPs, policy playbooks, product documentation, FAQs, compliance language, and client-specific databases.</p>
+            <span class="f-tag">Enterprise</span>
+          </div>
+          <div class="f-card fade-up">
+            <div class="f-icon">◉</div>
+            <h4>Neural + Mascot Button</h4>
+            <p>NALU is deployed as a Neural button for enterprise environments and as a Mascot button for consumer-facing retail, event, hospitality, and marketplace experiences.</p>
+            <span class="f-tag">Dual Mode</span>
+          </div>
+          <div class="f-card fade-up">
+            <div class="f-icon">↗</div>
+            <h4>Guided Migration</h4>
+            <p>High-value ticketing, travel, entertainment, sports, hospitality, product redemption, and digital gifting activity is guided through NALU to increase conversion and rewards capture.</p>
+            <span class="f-tag">Commerce</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="deployment">
-      <div class="container grid-2">
-        <div>
-          <div class="label">Deployment Zones</div>
-          <h2 style="margin-top:12px;">Global hospitality, domestic impact, enterprise control.</h2>
-          <p class="lead">TPG deploys NALU across diversified commercial environments where users need answers, transactions, rewards, and multilingual support in one intelligent interface.</p>
-        </div>
-        <div class="panel map-panel">
-          <div class="map-orbit"></div>
-          <div class="map-orbit two"></div>
-          <div class="pin"><strong>Hokkaido</strong><span>Hospitality concierge, seasonal travel, guest service, package upsells.</span></div>
-          <div class="pin"><strong>Antigua</strong><span>Resort experiences, booking support, international guest engagement.</span></div>
-          <div class="pin"><strong>Costa Rica</strong><span>Eco-tourism, wellness, digital nomad services, marketplace integration.</span></div>
-          <div class="pin"><strong>R.I.S.E.</strong><span>Resident support, workforce pathways, housing access, homebuyer programs.</span></div>
+    <!-- DEPLOYMENT -->
+    <section id="deployment" class="deploy-sec">
+      <div class="sec-inner">
+        <div class="grid-2">
+          <div>
+            <div class="sec-lbl">Deployment Zones</div>
+            <h2 class="sec-title">Global hospitality,<br>domestic impact,<br><em>enterprise control.</em></h2>
+            <p class="sec-desc">TPG deploys NALU across diversified commercial environments where users need answers, transactions, rewards, and multilingual support in one intelligent interface.</p>
+          </div>
+          <div class="map-panel">
+            <div class="map-orbit"></div>
+            <div class="map-orbit two"></div>
+            <div class="pin"><strong>Hokkaido</strong><span>Hospitality concierge, seasonal travel, guest service, package upsells.</span></div>
+            <div class="pin"><strong>Antigua</strong><span>Resort experiences, booking support, international guest engagement.</span></div>
+            <div class="pin"><strong>Costa Rica</strong><span>Eco-tourism, wellness, digital nomad services, marketplace integration.</span></div>
+            <div class="pin"><strong>R.I.S.E.</strong><span>Resident support, workforce pathways, housing access, homebuyer programs.</span></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="value">
-      <div class="container">
-        <div class="section-intro">
-          <h2>Where the value comes from.</h2>
-          <p>Real estate, hospitality, marketplace, devices, and digital inventory create value that is aggregated through EXIAL and reconnected to NALU loyalty members.</p>
+    <!-- VALUE SOURCES -->
+    <section id="value" class="value-sec">
+      <div class="sec-inner">
+        <div class="sec-center">
+          <div class="sec-lbl">Value Sources</div>
+          <h2 class="sec-title">Where the <em>value</em> comes from.</h2>
+          <p class="sec-desc">Real estate, hospitality, marketplace, devices, and digital inventory create value aggregated through EXIAL and reconnected to NALU loyalty members.</p>
         </div>
         <div class="grid-4">
-          <div class="card"><h3>Real Estate</h3><p>Profit at acquisition, development margin, lease revenue, and asset-backed participation opportunities.</p></div>
-          <div class="card"><h3>Hospitality</h3><p>Room block arbitrage, package margin, event-driven occupancy, and guest service monetization.</p></div>
-          <div class="card"><h3>Marketplace</h3><p>Vendor rebates, product integration, service referrals, and discounted fulfillment paths.</p></div>
-          <div class="card"><h3>Devices</h3><p>Mobile endpoints, subscriptions, device activation, and app ecosystem revenue.</p></div>
+          <div class="v-card fade-up"><h4>Real Estate</h4><p>Profit at acquisition, development margin, lease revenue, and asset-backed participation opportunities.</p></div>
+          <div class="v-card fade-up"><h4>Hospitality</h4><p>Room block arbitrage, package margin, event-driven occupancy, and guest service monetization.</p></div>
+          <div class="v-card fade-up"><h4>Marketplace</h4><p>Vendor rebates, product integration, service referrals, and discounted fulfillment paths.</p></div>
+          <div class="v-card fade-up"><h4>Devices</h4><p>Mobile endpoints, subscriptions, device activation, and app ecosystem revenue.</p></div>
         </div>
       </div>
     </section>
 
-    <section id="exial">
-      <div class="container">
-        <div class="panel" style="padding:34px;">
-          <div class="section-intro" style="margin-bottom: 26px;">
-            <div class="label">Powered by EXIAL</div>
-            <h2 style="margin-top:12px;">The bridge between platform activity and user value.</h2>
-            <p>EXIAL acts as the treasury and participation bridge that connects NALU engagement to ecosystem value, loyalty rewards, token conversion, yield pathways, savings, housing assistance, and retirement income recovery programs.</p>
+    <!-- EXIAL -->
+    <section id="exial" class="exial-sec">
+      <div class="sec-inner">
+        <div class="sec-center">
+          <div class="sec-lbl">Powered by EXIAL</div>
+          <h2 class="sec-title">The bridge between platform activity<br>and <em>user value.</em></h2>
+          <p class="sec-desc">EXIAL acts as the treasury and participation bridge that connects NALU engagement to ecosystem value, loyalty rewards, token conversion, yield pathways, savings, housing assistance, and retirement income recovery programs.</p>
+        </div>
+        <div class="waterfall">
+          <div class="node fade-up">
+            <div><strong>Revenue Sources</strong><span>Real estate, hospitality, events, devices, marketplace.</span></div>
           </div>
-          <div class="waterfall">
-            <div class="node"><div><strong>Revenue Sources</strong><span>Real estate, hospitality, events, devices, marketplace.</span></div></div>
-            <div class="arrow">→</div>
-            <div class="node"><div><strong>EXIAL Treasury</strong><span>Aggregation, allocation, bridge, token participation.</span></div></div>
-            <div class="arrow">→</div>
-            <div class="node"><div><strong>NALU Members</strong><span>Rewards, savings, tokens, programs, redemptions.</span></div></div>
+          <div class="arrow">→</div>
+          <div class="node fade-up">
+            <div><strong>EXIAL Treasury</strong><span>Aggregation, allocation, bridge, token participation.</span></div>
+          </div>
+          <div class="arrow">→</div>
+          <div class="node fade-up">
+            <div><strong>NALU Members</strong><span>Rewards, savings, tokens, programs, redemptions.</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="programs">
-      <div class="container">
-        <div class="section-intro">
-          <h2>Real outcomes. Not just rewards.</h2>
-          <p>NALU loyalty members may elect to use rewards for direct savings, marketplace value, travel benefits, or conversion across the EXIAL bridge into structured financial participation pathways.</p>
+    <!-- PROGRAMS -->
+    <section id="programs" class="programs-sec">
+      <div class="sec-inner">
+        <div class="sec-center">
+          <div class="sec-lbl">Member Programs</div>
+          <h2 class="sec-title">Real outcomes.<br>Not just <em>rewards.</em></h2>
+          <p class="sec-desc">NALU loyalty members may elect to use rewards for direct savings, marketplace value, travel benefits, or conversion across the EXIAL bridge into structured financial participation pathways.</p>
         </div>
-        <div class="grid-3">
-          <div class="card"><div class="icon">$</div><h3>Loyalty Rewards</h3><p>Members earn through AI usage, referrals, ticketing, hotel bookings, marketplace purchases, device activity, and ecosystem participation.</p></div>
-          <div class="card"><div class="icon">⌂</div><h3>Homebuyer Support</h3><p>Rewards and EXIAL participation may support down-payment assistance, closing cost support, and housing access programs where legally structured and approved.</p></div>
-          <div class="card"><div class="icon">∞</div><h3>Retirement Income Recovery</h3><p>Eligible members may elect to convert rewards into EXIAL participation pathways designed to support future supplemental income strategies.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="enterprise">
-      <div class="container grid-2">
-        <div class="card">
-          <h3>Enterprise Neural Mode</h3>
-          <p>Minimal, professional, closed-database AI for internal teams, employees, customer support representatives, campaign teams, hospitality operators, and institutional partners.</p>
-          <ul>
-            <li>Approved-source-only knowledge base</li>
-            <li>Human escalation workflows</li>
-            <li>Audit-ready query logs</li>
-            <li>Real-time WWTC language translation layer</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Consumer Mascot Mode</h3>
-          <p>Friendly, guided, conversion-oriented AI for public websites, events, hospitality properties, ticketing pages, retail activations, and marketplace environments.</p>
-          <ul>
-            <li>Ticketing and VIP package guidance</li>
-            <li>Hotel room and event bundle support</li>
-            <li>Product redemption and digital gifting</li>
-            <li>NALU rewards and EXIAL conversion prompts</li>
-          </ul>
+        <div class="grid-3" style="margin-top:52px;">
+          <div class="prog-card fade-up">
+            <div class="prog-icon">$</div>
+            <h4>Loyalty Rewards</h4>
+            <p>Members earn through AI usage, referrals, ticketing, hotel bookings, marketplace purchases, device activity, and ecosystem participation.</p>
+          </div>
+          <div class="prog-card fade-up">
+            <div class="prog-icon">⌂</div>
+            <h4>Homebuyer Support</h4>
+            <p>Rewards and EXIAL participation may support down-payment assistance, closing cost support, and housing access programs where legally structured and approved.</p>
+          </div>
+          <div class="prog-card fade-up">
+            <div class="prog-icon">∞</div>
+            <h4>Retirement Income Recovery</h4>
+            <p>Eligible members may elect to convert rewards into EXIAL participation pathways designed to support future supplemental income strategies.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="proforma">
-      <div class="container">
-        <div class="section-intro">
-          <h2>Pro-forma snapshot.</h2>
-          <p>Illustrative Year 1–2 model for enterprise, hospitality, marketplace, device, and loyalty participation revenue.</p>
+    <!-- ENTERPRISE / MASCOT MODES -->
+    <section id="enterprise" class="modes-sec">
+      <div class="sec-inner">
+        <div class="sec-center" style="margin-bottom:52px;">
+          <div class="sec-lbl">Deployment Modes</div>
+          <h2 class="sec-title">Two modes. One <em>intelligent</em> platform.</h2>
+          <p class="sec-desc">NALU adapts to the environment — enterprise-grade precision for internal teams, consumer-friendly guidance for public-facing properties.</p>
+        </div>
+        <div class="grid-2">
+          <div class="mode-card fade-up">
+            <span class="mode-tag">Enterprise</span>
+            <h3>Neural Mode</h3>
+            <p>Minimal, professional, closed-database AI for internal teams, employees, customer support representatives, campaign teams, hospitality operators, and institutional partners.</p>
+            <ul>
+              <li>Approved-source-only knowledge base</li>
+              <li>Human escalation workflows</li>
+              <li>Audit-ready query logs</li>
+              <li>Real-time WWTC language translation layer</li>
+            </ul>
+          </div>
+          <div class="mode-card fade-up">
+            <span class="mode-tag">Consumer</span>
+            <h3>Mascot Mode</h3>
+            <p>Friendly, guided, conversion-oriented AI for public websites, events, hospitality properties, ticketing pages, retail activations, and marketplace environments.</p>
+            <ul>
+              <li>Ticketing and VIP package guidance</li>
+              <li>Hotel room and event bundle support</li>
+              <li>Product redemption and digital gifting</li>
+              <li>NALU rewards and EXIAL conversion prompts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRO-FORMA -->
+    <section id="proforma" class="proforma-sec">
+      <div class="sec-inner">
+        <div class="sec-center">
+          <div class="sec-lbl">Pro-Forma</div>
+          <h2 class="sec-title"><em>Illustrative</em> Year 1–2 snapshot.</h2>
+          <p class="sec-desc">Enterprise, hospitality, marketplace, device, and loyalty participation revenue model.</p>
         </div>
         <div class="grid-4">
-          <div class="stat"><strong>750K</strong><span>Total users</span></div>
-          <div class="stat"><strong>400K</strong><span>Monthly active users</span></div>
-          <div class="stat"><strong>$42M</strong><span>Illustrative annual revenue</span></div>
-          <div class="stat"><strong>$12.6M</strong><span>Potential EXIAL rewards allocation</span></div>
+          <div class="stat-callout fade-up"><div class="sc-num">750<span>K</span></div><div class="sc-desc">Total users</div></div>
+          <div class="stat-callout fade-up"><div class="sc-num">400<span>K</span></div><div class="sc-desc">Monthly active users</div></div>
+          <div class="stat-callout fade-up"><div class="sc-num">$42<span>M</span></div><div class="sc-desc">Illustrative annual revenue</div></div>
+          <div class="stat-callout fade-up"><div class="sc-num">$12.6<span>M</span></div><div class="sc-desc">Potential EXIAL rewards allocation</div></div>
         </div>
       </div>
     </section>
 
-    <section id="access">
-      <div class="container">
-        <div class="cta">
-          <h2>Enter the system.</h2>
-          <p>NALU is the TPG interaction layer for controlled intelligence, guided commerce, enterprise support, hospitality engagement, event conversion, loyalty rewards, and asset-backed value participation.</p>
-          <div class="hero-actions" style="justify-content:center;">
-            <a class="btn btn-primary" href="mailto:info@tpgworldwide.com?subject=TPG%20NALU%20Enterprise%20Access%20Request">Request Enterprise Access</a>
-            <button class="btn btn-secondary" onclick="openAssistant()">Ask NALU</button>
-          </div>
+    <!-- CTA -->
+    <section id="access" class="cta-sec">
+      <div class="cta-box">
+        <h2>Enter the <em>system.</em></h2>
+        <p>NALU is the TPG interaction layer for controlled intelligence, guided commerce, enterprise support, hospitality engagement, event conversion, loyalty rewards, and asset-backed value participation.</p>
+        <div class="cta-actions">
+          <a class="btn-p" href="mailto:info@tpgworldwide.com?subject=TPG%20NALU%20Enterprise%20Access%20Request">Request Enterprise Access</a>
+          <button class="btn-g" onclick="openAssistant()">Ask NALU</button>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer>
-    <div class="container">
-      <strong>TPG × NALU</strong>
-      Enterprise AI Engagement • Loyalty Rewards • EXIAL Treasury Bridge • R.I.S.E. Deployment
+    <div class="f-left">© 2026 <a href="https://naluask.com">NaluAsk</a> · TPG × NALU Enterprise Platform</div>
+    <div class="f-right">
+      <a href="#platform">Platform</a>
+      <a href="#exial">EXIAL</a>
+      <a href="#programs">Programs</a>
+      <a href="mailto:info@tpgworldwide.com">Contact</a>
     </div>
   </footer>
 
+  <!-- ASSISTANT BUTTON -->
   <button class="assistant-button" onclick="openAssistant()" aria-label="Open NALU Assistant">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/>
+      <path d="M2 14h2"/><path d="M20 14h2"/>
+      <path d="M15 13v2"/><path d="M9 13v2"/>
+    </svg>
   </button>
 
+  <!-- ASSISTANT PANEL -->
   <aside id="assistantPanel" class="assistant-panel" aria-label="NALU Assistant">
     <div class="assistant-head">
-      <div><small id="assistantModeLabel">NALU Neural</small><strong>AI Interaction Layer</strong></div>
-      <button class="close" onclick="closeAssistant()" aria-label="Close">×</button>
+      <div>
+        <small id="assistantModeLabel">NALU Neural</small>
+        <strong>AI Interaction Layer</strong>
+      </div>
+      <button class="close-btn" onclick="closeAssistant()" aria-label="Close">×</button>
     </div>
     <div class="assistant-body">
       <div class="toggle">
@@ -480,7 +837,7 @@
         <button onclick="answer('hospitality')">Show hospitality and event use cases.</button>
         <button onclick="answer('rise')">How does R.I.S.E. use NALU?</button>
       </div>
-      <a class="btn btn-primary" href="mailto:info@tpgworldwide.com?subject=TPG%20NALU%20Enterprise%20Access%20Request">Request Enterprise Access</a>
+      <a class="btn-p" href="mailto:info@tpgworldwide.com?subject=TPG%20NALU%20Enterprise%20Access%20Request">Request Enterprise Access</a>
     </div>
   </aside>
 
@@ -492,9 +849,10 @@
     const mascotToggle = document.getElementById('mascotToggle');
     let mode = 'neural';
 
-    function openAssistant(){ panel.classList.add('open'); }
-    function closeAssistant(){ panel.classList.remove('open'); }
-    function setMode(next){
+    function openAssistant() { panel.classList.add('open'); }
+    function closeAssistant() { panel.classList.remove('open'); }
+
+    function setMode(next) {
       mode = next;
       label.textContent = next === 'neural' ? 'NALU Neural' : 'NALU Mascot';
       neuralToggle.classList.toggle('active', next === 'neural');
@@ -512,7 +870,13 @@
       rise: 'Inside R.I.S.E., NALU supports residents with housing access, workforce training, device onboarding, marketplace purchasing, financial education, homebuyer support, and future retirement income recovery pathways.'
     };
 
-    function answer(key){ response.textContent = answers[key]; }
+    function answer(key) { response.textContent = answers[key]; }
+
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
     setTimeout(() => {
       if (!panel.classList.contains('open')) {
